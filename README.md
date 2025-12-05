@@ -13,7 +13,7 @@ Prior to this project, the organisation did not have a single, consolidated refe
   - Changing data structures was risky due to unknown downstream dependencies.
 
 ## Solution
-The AKG Data Dictionary centralises and documents:
+The AKG Data Dictionary centralises and documents:  
     1. All Snowflake Tables & Fields
 Extracted directly from Snowflake metadata (e.g., INFORMATION_SCHEMA.COLUMNS), including:
   - Schema
