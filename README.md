@@ -14,32 +14,37 @@ Prior to this project, the organisation did not have a single, consolidated refe
 
 ## Solution
 The AKG Data Dictionary centralises and documents:  
-    1. All Snowflake Tables & Fields
+    
+  1. All Snowflake Tables & Fields
 Extracted directly from Snowflake metadata (e.g., INFORMATION_SCHEMA.COLUMNS), including:
   - Schema
   - Table type (base table vs. view)
   - Column names
   - Data types
 
-2. Calculated Fields
+2. Calculated Fields  
 The dictionary identifies which fields are derived versus raw, making KPI logic, flags and metrics fully transparent.
 
-3. Filters & Business Rules
+3. Filters & Business Rules  
 If logic requires filters or special rules, they are captured in dedicated fields.
 
-4. Dependencies
+4. Dependencies  
 The tool records where each field originates and which upstream/downstream dependencies there are, such as:
   - CTEs
   - Other views or base tables
   - Presentation layer tables
 
-5. Searchable Structure
+5. Searchable Structure  
 The final dictionary is stored in a format that allows users to quickly:
   - Search for a field name
   - Identify whether it is calculated
   - View the SQL logic
   - Understand dependencies across layers
   - Confirm where the “source of truth” resides
+
+6. Maintaining the Data Dictionary   
+When new fields were added or existing logic was changed by the business, a ticket would be raised for the Data Dictionary to be updated, ensuring it was always up-to-date.
+
 
 ## Technical Approach
 1) Automated extraction of metadata from Snowflake using INFORMATION_SCHEMA function.
@@ -53,20 +58,18 @@ The final dictionary is stored in a format that allows users to quickly:
 |  PRESENTATION  |  DIM_PARTICIPANT  |  BASE TABLE  |  DISENGAGED_60_V1  |  TEXT  |  N  |   |   |  VW_DAILY_REPORT  |
 ---			
 
-6. Maintaining the DDL
-When new fields were added or existing logic was changed by the business, a ticket would be raised for the DDL to be updated, ensuring it was always up-to-date.
 
-## Impact
+## Impact  
 The AKG Data Dictionary delivered several meaningful business and technical benefits:
   - Reduced time spent searching for data by IT/BI teams.
   - Improved consistency and accuracy in reporting and metrics.
   - Enabled faster onboarding for new team members.
   - Streamlined data governance processes.
-  - Provided complete visibility into Snowflake schemas and data lineage.
-  - Minimized risk when altering data models due to improved dependency awareness.
+  - Enhanced visibility into Snowflake schemas and data lineage.
+  - Minimised risk when altering business logic.
   - Reduced duplication of metrics, calculations, and logic
 
-## Future Enhancements
+## Future Enhancements  
   - Automated refresh pipeline for continuous metadata updates.
   - Integration with data cataloging tools (e.g., Alation, Collibra, Atlan).
   - Field-level lineage visualisation.
